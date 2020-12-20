@@ -5,8 +5,8 @@ send_message_to=571213272               #Give telegram id/group id where message
 
 curl -s -X POST https://api.telegram.org/bot$bot_token/sendMessage -d chat_id=$send_message_to -d text="Build started"
 
-ccache_dir=/dev/shm/ 	#Space is not allowed
-max_ccache=30G
+ccache_dir=~/ccache 	#Space is not allowed
+max_ccache=28G
 
 
 export CCACHE_DIR=$ccache_dir
@@ -24,7 +24,7 @@ cd /mnt/aex/
 . build/envsetup.sh
 #lunch superior_tulip-userdebug
 lunch aosp_mido-userdebug
-make aex -j18
+make aex -j56
 
 
 curl -s -X POST https://api.telegram.org/bot$bot_token/sendMessage -d chat_id=$send_message_to -d text="Build finished"
