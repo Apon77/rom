@@ -5,9 +5,9 @@ send_message_to=571213272               #Give telegram id/group id where message
 
 curl -s -X POST https://api.telegram.org/bot$bot_token/sendMessage -d chat_id=$send_message_to -d text="Build started"
 
-ccache_dir=~/ccache 	#Space is not allowed
+ccache_dir=~/ccache/ 	#Space is not allowed
 max_ccache=28G
-
+out_base_dir=/mnt/out/
 
 export CCACHE_DIR=$ccache_dir
 ccache -M $max_ccache
@@ -15,6 +15,7 @@ ccache -M $max_ccache
 export USE_CCACHE=1
 export CCACHE_EXEC=$(which ccache)
 #export SELINUX_IGNORE_NEVERALLOWS=true
+export OUT_DIR_COMMON_BASE=$out_base_dir
 
 export KBUILD_BUILD_USER="k"
 export KBUILD_BUILD_HOST="K"
